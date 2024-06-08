@@ -1,0 +1,14 @@
+{
+  "name": "liga-travelers",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "1.43.0",
+    "@types/node": "20.12.4",
+    "typescript": "5.4.5"
+  }
+}
