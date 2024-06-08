@@ -9,16 +9,21 @@ export default defineConfig({
   workers: process.env.CI ? 4 : undefined,
   reporter: [
     ['list'],
+    ['allure-playwright'],
   ],
   use: {
     baseURL: Url.base,
-    trace: 'on-first-retry',
+    headless: false,
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
+    trace: 'off',
   },
 
   projects: [
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'],
+        channel: 'chrome',
         deviceScaleFactor: undefined,
         viewport: null,
         launchOptions: {

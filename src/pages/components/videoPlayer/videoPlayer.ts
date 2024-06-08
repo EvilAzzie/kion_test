@@ -1,5 +1,7 @@
 import test, { expect, Page } from "@playwright/test";
 import { ElementType } from "../ComponentRecords";
+import { VideoPlayerSelectors } from "./videoPlayerConstants";
+import { Delay } from "../../../utils/constants";
 
 export default class VideoPlayer {
   readonly page: Page;
@@ -8,17 +10,29 @@ export default class VideoPlayer {
     this.page = page;
   }
 
-  async checkElementIsVisible(element: ElementType, status = true): Promise<void> {
-    await test.step(`Check ${element.name} of video is${status ? '' : ' not'} visible`, async () => {
+  async checkTabbarIsVisible(status = true): Promise<void> {
+    await test.step(`Check tabbar of video is${status ? '' : ' not'} visible`, async () => {
       status
-      ? await expect(this.page.locator(element.locator)).toBeVisible()
-      : await expect(this.page.locator(element.locator)).not.toBeVisible()
+      ? await expect(this.page.locator(VideoPlayerSelectors.tabbar.locator)).toBeVisible()
+      : await expect(this.page.locator(VideoPlayerSelectors.tabbar.locator)).not.toBeVisible()
+    });
+  };
+
+  async checkVideoIsFullscreen(status = true): Promise<void> {
+    await test.step(`Check video is fullscreen`, async () => {
+      await expect(this.page.locator(VideoPlayerSelectors.videoFullscreen.locator)).toBeVisible();
+    });
+  }
+
+  async hoverVideo(): Promise<void> {
+    await test.step(`Hover video`, async () => {
+      await this.page.locator(VideoPlayerSelectors.video.locator).hover();
     });
   };
 
   async clickOnElement(element: ElementType): Promise<void> {
     await test.step(`Click on video element ${element.name}`, async () => {
-     await this.page.locator(element.locator).click();
+      await this.page.locator(element.locator).click();
     });
   };
 };

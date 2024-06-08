@@ -1,6 +1,7 @@
 import { NavigationButtons } from '../pages/components/navigationSidebar/navigatioinSidebarConstants';
 import { FeedVideoSelectors } from '../pages/components/videoFeed/videoFeedConstants';
 import { VideoPlayerSelectors } from '../pages/components/videoPlayer/videoPlayerConstants';
+import VideoPage from '../pages/pages/videoPage';
 import { test } from '../utils/fixture';
 
 test.describe('DZEN', () => {
@@ -28,16 +29,21 @@ test.describe('DZEN', () => {
     }
   });
 
-
-  test.only('Open video page, find and open video', async ({ videoPage, searchResultsPage }) => {
+  test('Open video page, find and open video', async ({ videoPage, searchResultsPage, webBrowser }) => {
     const videoIndex = 0;
   
     await videoPage.open();
     await videoPage.searchField.search('Синий трактор');
     await searchResultsPage.clickVideoByIndex(videoIndex);
-    await videoPage.videoPlayer.checkElementIsVisible(VideoPlayerSelectors.tabbar);
-    await videoPage.videoPlayer.checkElementIsVisible(VideoPlayerSelectors.tabbar, false);
-    await videoPage.videoPlayer.clickOnElement(VideoPlayerSelectors.fullScreen);
+
+    const newPage = await webBrowser.awaitPagePromise()
+    const secondTabVideoPage = new VideoPage(newPage);
+
+    await secondTabVideoPage.videoPlayer.checkTabbarIsVisible();
+    await secondTabVideoPage.videoPlayer.checkTabbarIsVisible(false);
+
+    await secondTabVideoPage.videoPlayer.hoverVideo();
+    await secondTabVideoPage.videoPlayer.clickOnElement(VideoPlayerSelectors.fullScreen);
+    await secondTabVideoPage.videoPlayer.checkVideoIsFullscreen();
   });
 })
- 
