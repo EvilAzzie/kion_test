@@ -2,12 +2,7 @@
   "name": "kion",
   "version": "1.0.0",
   "description": "",
-  "scripts": {
-    "buildDocker": "docker build --tag 'test_kion' .",
-    "container": "docker run -it --rm test_kion",
-    "test": "npx playwright test",
-    "report": "allure serve allure-results"
-  },
+  "scripts": {},
   "keywords": [],
   "author": "",
   "license": "ISC",

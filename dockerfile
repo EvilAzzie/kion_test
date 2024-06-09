@@ -8,5 +8,4 @@ WORKDIR /kion_test
 # Install dependencies
 RUN yarn install
 
-# Install browsers
-RUN npx playwright install
+RUN npx playwright install --with-deps chrome

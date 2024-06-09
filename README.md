@@ -20,7 +20,8 @@ INSTALLATION
 Run tests
 =====
 
-1. Run in docker
+1. Run in docker (only line reporter works with docker)
+    - Install docker https://docs.docker.com/desktop/install/windows-install/
     - Build image
         ```bash
         docker build --tag 'test_kion' .
@@ -29,12 +30,23 @@ Run tests
         ```bash
         docker run -it --rm test_kion
         ```
+    - Run tests
+        ```bash
+        xvfb-run npx playwright test
+        ```
     - Exit container
         ```bash
-        docker run -it --rm test_kion
+        exit
         ```
 
-1. Run allure report
+1. Run tests
     ```bash
-    allure serve allure-results
+    npx playwright test
     ```
+
+1. Run allure report
+    - Install allure reporter https://allurereport.org/docs/install/
+    - Launch reporter
+        ```bash
+        allure serve allure-results
+        ```
