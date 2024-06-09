@@ -11,5 +11,5 @@ export const NavigationIcons: IconRecord = {
   video: {
     default: new RegExp('#video_showcase_ac' + /.*?/.source),
     selected: new RegExp('#video_showcase_filled' + /.*?/.source),
-  }
+  },
 } as const;

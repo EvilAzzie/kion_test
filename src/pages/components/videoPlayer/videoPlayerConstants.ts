@@ -14,7 +14,7 @@ export const VideoPlayerSelectors: ElementRecord = {
     locator: '[aria-label="Видеоплеер"]',
   },
   videoFullscreen: {
-    name: 'videon in fullscreen mode',
+    name: 'video in fullscreen mode',
     locator: '[aria-label="Видеоплеер"] ._is-fullscreen',
   },
 } as const;

@@ -1,7 +1,6 @@
 import test, { expect, Page } from "@playwright/test";
 import { ElementType } from "../ComponentRecords";
 import { VideoPlayerSelectors } from "./videoPlayerConstants";
-import { Delay } from "../../../utils/constants";
 
 export default class VideoPlayer {
   readonly page: Page;
@@ -18,7 +17,7 @@ export default class VideoPlayer {
     });
   };
 
-  async checkVideoIsFullscreen(status = true): Promise<void> {
+  async checkVideoIsFullscreen(): Promise<void> {
     await test.step(`Check video is fullscreen`, async () => {
       await expect(this.page.locator(VideoPlayerSelectors.videoFullscreen.locator)).toBeVisible();
     });
@@ -31,7 +30,7 @@ export default class VideoPlayer {
   };
 
   async clickOnElement(element: ElementType): Promise<void> {
-    await test.step(`Click on video element ${element.name}`, async () => {
+    await test.step(`Click on video element ${element}`, async () => {
       await this.page.locator(element.locator).click();
     });
   };

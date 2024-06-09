@@ -27,7 +27,6 @@ export default class VideoFeed {
 
   async checkElementOfVideoWithIndex(video: number, element: ElementType): Promise<void> {
     await test.step(`Check ${element.name} of video with index ${video}`, async () => {
-
       await expect(this.page
         .locator(FeedSelectors.feed.locator)
         .locator(FeedSelectors.videos.locator)
