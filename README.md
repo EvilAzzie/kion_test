@@ -1,7 +1,7 @@
 ABOUT
 =====
-This is test task for Kion
-Headed test mode is used here due to unstable Dzen.ru behavior in headless mode
+- This is test task for Kion
+- Headed test mode is used here due to unstable Dzen.ru behavior in headless mode
 
 INSTALLATION
 =====
